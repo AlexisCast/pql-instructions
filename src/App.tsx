@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './routes/root/Root/Root';
 import Error from './routes/root/Error/Error';
 
+import Home from './routes/home/Home';
+
 import TeamIncantation from './routes/teamIncantation/TeamIncantation';
 
 const router = createBrowserRouter([
@@ -13,11 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <div>
-            <h1>Welcome to Premier Quidditch League!</h1>
-          </div>
-        )
+        element: <Home />
       },
       {
         path: 'teamIncantation',
