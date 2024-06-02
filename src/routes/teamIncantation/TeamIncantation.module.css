@@ -1,0 +1,52 @@
+.container {
+  background-color: rgb(44, 100, 137);
+  width: 800px;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  display: flex;
+  background-color: red;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.section__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.table__conatainer {
+  max-height: 300px;
+  min-height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  width: fit-content;
+  background-color: azure;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+}
+
+.table__header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+.table__body {
+  margin-top: 30px;
+}

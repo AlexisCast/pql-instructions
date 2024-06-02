@@ -25,20 +25,24 @@ const TeamIncantation = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Team Incantation</h1>
-      <form>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input id="name" type="text" placeholder="Name" required />
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <input id="description" name="description" type="text" placeholder="Description" />
-        </div>
-        <div>
-          <table>
-            <thead>
+
+      <form className={styles.form}>
+        <section className={styles.section}>
+          <div className={styles.section__field}>
+            <label htmlFor="name">Name</label>
+            <input id="name" type="text" placeholder="Name" required />
+          </div>
+          <div className={styles.section__field}>
+            <label htmlFor="description">Description</label>
+            <input id="description" name="description" type="text" placeholder="Description" />
+          </div>
+        </section>
+
+        <div className={styles.table__conatainer}>
+          <table className={styles.table}>
+            <thead className={styles.table__header}>
               <tr>
                 <th>id</th>
                 <th>Name</th>
@@ -48,7 +52,7 @@ const TeamIncantation = () => {
                 <th>Remove</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={styles.table__body}>
               {availablePlayers.map(({ age, id, name, position, team_id }: PlayerProps) => (
                 <tr key={id}>
                   <td>{id}</td>
@@ -66,7 +70,10 @@ const TeamIncantation = () => {
             </tbody>
           </table>
         </div>
-        <button>Create Team</button>
+
+        <div>
+          <button>Create Team</button>
+        </div>
       </form>
     </div>
   );
