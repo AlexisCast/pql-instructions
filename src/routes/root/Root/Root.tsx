@@ -1,17 +1,13 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
+import SideBar from '../../../component/SideBar/SideBar';
 
 import styles from './Root.module.css';
 
 const RootLayout = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.sideBar}>
-        <nav className={styles.nav}>
-          <Link to="/">Home</Link>
-          <Link to="/teamIncantation">Team Incantation</Link>
-          <Link to="/teams">Teams</Link>
-        </nav>
-      </div>
+      <SideBar />
       <main className={styles.main}>
         <Outlet />
       </main>
