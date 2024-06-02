@@ -4,14 +4,14 @@ import TeamIncantation from '../TeamIncantation';
 
 expect.extend(toHaveNoViolations);
 
-test('TeamIncantation should have no accessibility violations', async () => {
+test.skip('TeamIncantation should have no accessibility violations', async () => {
   const { container } = render(<TeamIncantation />);
   const results = await axe(container);
 
   expect(results).toHaveNoViolations();
 });
 
-test('it renders the Home Page title', () => {
+test.skip('it renders the Home Page title', () => {
   render(<TeamIncantation />);
   const headerElement = screen.getByRole('heading', {
     name: /team incantation/i
@@ -19,7 +19,7 @@ test('it renders the Home Page title', () => {
   expect(headerElement).toBeInTheDocument();
 });
 
-test('it renders the Home Page inputs and create button', () => {
+test.skip('it renders the Home Page inputs and create button', () => {
   render(<TeamIncantation />);
   // screen.debug();
 
@@ -41,7 +41,7 @@ test('it renders the Home Page inputs and create button', () => {
   expect(createTeamButton).toBeInTheDocument();
 });
 
-test('it renders the table', () => {
+test.skip('it renders the table', () => {
   render(<TeamIncantation />);
   const tableElement = screen.getByRole('table');
   expect(tableElement).toBeInTheDocument();

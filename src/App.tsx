@@ -5,7 +5,9 @@ import Error from './routes/root/Error/Error';
 
 import Home from './routes/home/Home';
 
-import TeamIncantation from './routes/teamIncantation/TeamIncantation';
+import TeamIncantation, {
+  loader as teamIncantationLoader
+} from './routes/teamIncantation/TeamIncantation';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,13 @@ const router = createBrowserRouter([
       },
       {
         path: 'teamIncantation',
-        element: <TeamIncantation />
+        children: [
+          {
+            index: true,
+            element: <TeamIncantation />,
+            loader: teamIncantationLoader
+          }
+        ]
       },
       {
         path: 'teams',
