@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --color-white: white;
+  --color-bg: rgba(0, 0, 0, 0.87);
 }
 
 #root {
@@ -31,6 +32,14 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
 }
 
 * {
