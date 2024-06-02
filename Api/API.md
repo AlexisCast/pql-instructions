@@ -12,7 +12,6 @@
    - [Teams](#teams)
    - [Players](#players)
 
-
 ## Overview
 
 This API provides access to manage teams and players within the Premier Quidditch League. It enables the creation of teams, assignment of players to teams, and retrieval of available players who are not yet assigned to any team.
@@ -28,7 +27,7 @@ http://localhost:3001/api
 Retrieves a list of players who are currently unassigned to any team.
 
 - **URL**
-  
+
   /api/players/available
 
 - **Method**
@@ -36,9 +35,10 @@ Retrieves a list of players who are currently unassigned to any team.
   GET
 
 - **Success Response:**
-  - **Code:** 200 
-  - **Content:** 
-  
+
+  - **Code:** 200
+  - **Content:**
+
   ```json
   [
     {
@@ -52,7 +52,8 @@ Retrieves a list of players who are currently unassigned to any team.
   ```
 
 - **Error Response:**
-  - **Code:** 500 INTERNAL SERVER ERROR 
+
+  - **Code:** 500 INTERNAL SERVER ERROR
   - **Content:** `{ "error" : "Error message" }`
 
 - **Sample Call:**
@@ -60,7 +61,6 @@ Retrieves a list of players who are currently unassigned to any team.
   ```bash
   curl -X GET http://localhost:3001/api/players/available/
   ```
-
 
 ### Creating teams
 
@@ -77,6 +77,7 @@ Creates a new team and assigns players to the team. It returns an error if any p
 - **Data Params**
 
   Required:
+
   ```json
   {
     "name": "Team 1",
@@ -86,9 +87,11 @@ Creates a new team and assigns players to the team. It returns an error if any p
   ```
 
 - **Success Response:**
+
   - **Code:** 201 CREATED
 
 - **Content:**
+
   ```json
   {
     "message": "Team created successfully"
@@ -96,12 +99,12 @@ Creates a new team and assigns players to the team. It returns an error if any p
   ```
 
 - **Error Response:**
-  
+
   - **Code:**
     400 BAD REQUEST
   - **Content:**
     `{ "message" : "Name is required" }`
-  OR
+    OR
   - **Code:**
     500 INTERNAL SERVER ERROR
   - **Content:**
@@ -110,26 +113,31 @@ Creates a new team and assigns players to the team. It returns an error if any p
 #### Possible Error Responses for POST /teams
 
 - **Missing Required Fields**
+
   - **Code:** 400 BAD REQUEST
   - **Content:** `{ "message" : "Name is required" }`
   - **Description:** This error occurs when the required `name` field is not provided in the request body.
 
 - **Player Not Found**
+
   - **Code:** 404 NOT FOUND
   - **Content:** `{ "message" : "Player with id [id] not found" }`
   - **Description:** This error is returned when one or more player IDs provided in the `players` array do not correspond to any existing player records.
 
 - **Player Already Assigned**
+
   - **Code:** 400 BAD REQUEST
   - **Content:** `{ "message" : "Player with id [id] is already in a team" }`
   - **Description:** This error occurs if a player is already assigned to another team, preventing them from being reassigned.
 
 - **Database Error**
+
   - **Code:** 500 INTERNAL SERVER ERROR
   - **Content:** `{ "message" : "Database error occurred" }`
   - **Description:** A generic error message for any unexpected database errors that prevent the team from being created or players from being updated.
 
 - **Team Creation Failed**
+
   - **Code:** 500 INTERNAL SERVER ERROR
   - **Content:** `{ "message" : "Error creating team" }`
   - **Description:** This error indicates that despite valid input, the server failed to create a new team due to an internal issue.
@@ -141,7 +149,6 @@ Creates a new team and assigns players to the team. It returns an error if any p
   -d '{"name": "Team 1", "slogan": "Slogan 1", "players": [1, 2, 3]}'
   ```
 
-
 ## Other Available Resources
 
 JSON Server automatically provides standard CRUD operations for all entities defined in the `db.json`. Below are the endpoints available for the `teams` and `players` entities.
@@ -149,6 +156,7 @@ JSON Server automatically provides standard CRUD operations for all entities def
 ### Teams
 
 - **GET /teams**
+
   - Retrieves a list of all teams.
   - **Sample Call:**
     ```bash
@@ -156,6 +164,7 @@ JSON Server automatically provides standard CRUD operations for all entities def
     ```
 
 - **GET /teams/{id}**
+
   - Retrieves a team by its ID.
   - **Sample Call:**
     ```bash
@@ -164,8 +173,8 @@ JSON Server automatically provides standard CRUD operations for all entities def
 
 - **POST /teams**
   - Creates a new team. (Detailed in the custom POST endpoint section)
-  
 - **PUT /teams/{id}**
+
   - Updates an existing team by ID.
   - **Sample Call:**
     ```bash
@@ -182,6 +191,7 @@ JSON Server automatically provides standard CRUD operations for all entities def
 ### Players
 
 - **GET /players**
+
   - Retrieves a list of all players.
   - **Sample Call:**
     ```bash
@@ -189,6 +199,7 @@ JSON Server automatically provides standard CRUD operations for all entities def
     ```
 
 - **GET /players/{id}**
+
   - Retrieves a player by ID.
   - **Sample Call:**
     ```bash
@@ -196,6 +207,7 @@ JSON Server automatically provides standard CRUD operations for all entities def
     ```
 
 - **POST /players**
+
   - Creates a new player.
   - **Sample Call:**
     ```bash
@@ -203,6 +215,7 @@ JSON Server automatically provides standard CRUD operations for all entities def
     ```
 
 - **PUT /players/{id}**
+
   - Updates an existing player by ID.
   - **Sample Call:**
     ```bash
@@ -217,4 +230,3 @@ JSON Server automatically provides standard CRUD operations for all entities def
     ```
 
 These endpoints allow for full control over team and player data via standard RESTful API operations.
-

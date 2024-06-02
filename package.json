@@ -19,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:coverage": "npm test -- --coverage",
+    "eject": "react-scripts eject",
+    "format": "prettier --write ./**/*.{js,ts,tsx,css,md,json} --config ./.prettierrc.json"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^15.0.7"
+    "@testing-library/react": "^15.0.7",
+    "prettier": "3.3.0"
   }
 }

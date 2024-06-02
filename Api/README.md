@@ -9,6 +9,7 @@ This API is built using [JSON Server](https://github.com/typicode/json-server), 
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - [Node.js](https://nodejs.org/) - Download Node.js from the official website. npm (Node Package Manager) comes installed with Node.js.
 - npm - Typically installed with Node.js.
 
@@ -17,6 +18,7 @@ Before you begin, ensure you have the following installed:
 1. **Clone the Repository**
 
    Start by cloning this repository to your local machine:
+
    ```sh
    git clone https://github.com/ca-taly-st/pql-api.git
    cd pql-api
@@ -24,23 +26,23 @@ Before you begin, ensure you have the following installed:
 
 2. **Install Dependencies**
 
-    Install project dependencies on your machine:
+   Install project dependencies on your machine:
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 3. **Start the JSON Server**
-    
-    Navigate to the project directory where `db.json` is located and start JSON Server:
 
-    ```sh
-    npm run start
-    ```
+   Navigate to the project directory where `db.json` is located and start JSON Server:
 
-    This will serve your API at http://localhost:3001/.
+   ```sh
+   npm run start
+   ```
 
-## API 
+   This will serve your API at http://localhost:3001/.
+
+## API
 
 Read the [API DOCS](./API.md)
 
