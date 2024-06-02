@@ -38,12 +38,10 @@ const TeamIncantation = () => {
   const form = useRef<HTMLFormElement>(null);
 
   const handleRemovePlayer = (id: number) => {
-    // console.log({ id });
     setAvailablePlayers((prev) => prev.filter((player) => player.id !== id));
   };
 
   const handleReset = () => {
-    // console.log({ availablePlayersReset });
     setAvailablePlayers([...availablePlayersReset]);
   };
 
@@ -61,10 +59,10 @@ const TeamIncantation = () => {
     const newTeam: newTeamProps = {
       name: data.name as string,
       slogan: data.description as string,
-      // players: [4, 5, 6],
       players: arrayOfPlayerIds
     };
     console.log({ newTeam });
+    form.current?.reset();
   };
 
   const abilities: Abilities = {
