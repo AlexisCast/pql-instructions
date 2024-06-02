@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 
 import { CLIENT_URL, PLAYERS_URL } from '../../config';
@@ -13,27 +13,72 @@ interface PlayerProps {
   team_id: number;
 }
 
+type FormValues = {
+  name: FormDataEntryValue;
+  description: FormDataEntryValue;
+};
+
+type newTeamProps = {
+  name: string;
+  slogan: string;
+  players: number[];
+};
+
+type Role = 'Seeker' | 'Beater' | 'Chaser' | 'Keeper';
+
+type Abilities = {
+  [key in Role]: string[];
+};
+
 const TeamIncantation = () => {
   const dataLoader: PlayerProps[] = useLoaderData() as PlayerProps[];
 
   const [availablePlayers, setAvailablePlayers] = useState<PlayerProps[]>(dataLoader);
   const [availablePlayersReset, setAvailablePlayersReset] = useState<PlayerProps[]>(dataLoader);
+  const form = useRef<HTMLFormElement>(null);
 
   const handleRemovePlayer = (id: number) => {
-    console.log({ id });
+    // console.log({ id });
     setAvailablePlayers((prev) => prev.filter((player) => player.id !== id));
   };
 
   const handleReset = () => {
-    console.log({ availablePlayersReset });
+    // console.log({ availablePlayersReset });
     setAvailablePlayers([...availablePlayersReset]);
+  };
+
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries()) as FormValues;
+
+    console.log({ data });
+
+    // Extracting only the id values
+    const arrayOfPlayerIds = availablePlayers.map((player) => player.id);
+
+    const newTeam: newTeamProps = {
+      name: data.name as string,
+      slogan: data.description as string,
+      // players: [4, 5, 6],
+      players: arrayOfPlayerIds
+    };
+    console.log({ newTeam });
+  };
+
+  const abilities: Abilities = {
+    Seeker: ['Enhanced Vision', 'Speed Burst'],
+    Beater: ['Power Swing', 'Iron Defense'],
+    Chaser: ['Accurate Pass', 'Agility'],
+    Keeper: ['Quick Reflexes', 'Wall Defense']
   };
 
   return (
     <div className={styles.container}>
       <h1>Team Incantation</h1>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleOnSubmit} ref={form}>
         <section className={styles.section}>
           <div className={styles.section__field}>
             <label htmlFor="name">Name</label>
@@ -64,7 +109,11 @@ const TeamIncantation = () => {
                   <td>{name}</td>
                   <td>{age}</td>
                   <td>{position}</td>
-                  <td>special ability</td>
+                  <td>
+                    {abilities[`${position}` as Role].map((ability, index) => (
+                      <p key={index}>{ability}</p>
+                    ))}
+                  </td>
                   <td>
                     <button type="button" onClick={() => handleRemovePlayer(id)}>
                       remove
