@@ -21,7 +21,8 @@
     "test": "react-scripts test",
     "test:coverage": "npm test -- --coverage",
     "eject": "react-scripts eject",
-    "format": "prettier --write ./**/*.{js,ts,tsx,css,md,json} --config ./.prettierrc.json"
+    "format": "prettier --write ./**/*.{js,ts,tsx,css,md,json} --config ./.prettierrc.json",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^15.0.7",
+    "husky": "^9.0.11",
     "prettier": "3.3.0"
   }
 }

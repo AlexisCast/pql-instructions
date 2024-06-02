@@ -35,3 +35,6 @@ yarn.lock
 
 # production
 /build
+
+#husky
+.husky/_
