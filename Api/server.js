@@ -16,6 +16,7 @@ server.get('/api/players/available/', (req, res) => {
   // Filter out players without a team_id
   let availablePlayers = players.filter((player) => player.team_id === null);
 
+  // throw new Error('Test error');
   res.jsonp(availablePlayers);
 });
 

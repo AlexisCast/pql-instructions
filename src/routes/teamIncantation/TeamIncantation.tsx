@@ -15,13 +15,18 @@ interface PlayerProps {
 
 const TeamIncantation = () => {
   const dataLoader: PlayerProps[] = useLoaderData() as PlayerProps[];
-  console.log({ dataLoader });
 
   const [availablePlayers, setAvailablePlayers] = useState<PlayerProps[]>(dataLoader);
+  const [availablePlayersReset, setAvailablePlayersReset] = useState<PlayerProps[]>(dataLoader);
 
   const handleRemovePlayer = (id: number) => {
     console.log({ id });
     setAvailablePlayers((prev) => prev.filter((player) => player.id !== id));
+  };
+
+  const handleReset = () => {
+    console.log({ availablePlayersReset });
+    setAvailablePlayers([...availablePlayersReset]);
   };
 
   return (
@@ -73,6 +78,9 @@ const TeamIncantation = () => {
 
         <div>
           <button>Create Team</button>
+          <button type="button" onClick={() => handleReset()}>
+            Reset Players
+          </button>
         </div>
       </form>
     </div>
@@ -92,11 +100,12 @@ export const loader = async ({ request, params }: any) => {
   });
 
   if (!response.ok) {
-    return json({
-      isError: true,
-      msg: 'Could not fetch products',
-      status: response.status
-    });
+    throw json(
+      { message: 'Could not fetch players...' },
+      {
+        status: 500
+      }
+    );
   } else {
     return response;
   }
