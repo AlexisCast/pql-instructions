@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './routes/root/Root/Root';
 import Error from './routes/root/Error/Error';
 
+import TeamIncantation from './routes/teamIncantation/TeamIncantation';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -19,11 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'teamIncantation',
-        element: (
-          <div>
-            <h1>Team Incantation</h1>
-          </div>
-        )
+        element: <TeamIncantation />
       },
       {
         path: 'teams',
