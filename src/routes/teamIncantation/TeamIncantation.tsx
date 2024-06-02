@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 
 import { CLIENT_URL, PLAYERS_URL } from '../../config';
@@ -14,8 +15,14 @@ interface PlayerProps {
 
 const TeamIncantation = () => {
   const dataLoader: PlayerProps[] = useLoaderData() as PlayerProps[];
-
   console.log({ dataLoader });
+
+  const [availablePlayers, setAvailablePlayers] = useState<PlayerProps[]>(dataLoader);
+
+  const handleRemovePlayer = (id: number) => {
+    console.log({ id });
+    setAvailablePlayers((prev) => prev.filter((player) => player.id !== id));
+  };
 
   return (
     <div>
@@ -42,26 +49,20 @@ const TeamIncantation = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>id</td>
-                <td>name</td>
-                <td>age</td>
-                <td>position</td>
-                <td>special ability</td>
-                <td>
-                  <button>remove</button>
-                </td>
-              </tr>
-              <tr>
-                <td>id</td>
-                <td>name</td>
-                <td>age</td>
-                <td>position</td>
-                <td>special ability</td>
-                <td>
-                  <button>remove</button>
-                </td>
-              </tr>
+              {availablePlayers.map(({ age, id, name, position, team_id }: PlayerProps) => (
+                <tr key={id}>
+                  <td>{id}</td>
+                  <td>{name}</td>
+                  <td>{age}</td>
+                  <td>{position}</td>
+                  <td>special ability</td>
+                  <td>
+                    <button type="button" onClick={() => handleRemovePlayer(id)}>
+                      remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
