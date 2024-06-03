@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { json, useRouteLoaderData } from 'react-router-dom';
 
-import { CLIENT_URL, PLAYERS_URL, TEAMS_URL } from '../../config';
-
+import TeamTable from '../../component/Team/TeamTable';
 import { TeamProps } from '../teams/Teams';
 import { PlayerProps } from '../teamIncantation/TeamIncantation';
 
+import { CLIENT_URL, PLAYERS_URL, TEAMS_URL } from '../../config';
+
+import styles from './TeamDetail.module.css';
 interface TeamDetailProps {
   team: TeamProps;
   players: PlayerProps[];
@@ -23,17 +25,18 @@ const TeamDetail = () => {
 
     setTeamPlayers(playersOfCurrentTeam);
   }, [routeLoaderData]);
-  //TODO: style the comoponent
+  //TODO: style the component
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Team</h1>
-      <h3>{team.name}</h3>
-      <p>{team.slogan}</p>
-      <ul>
+      <h2>{team.name}</h2>
+      <h3>{team.slogan}</h3>
+      {/* <ul>
         {teamPlayers.map((player) => (
           <li key={player.id}>{player.name}</li>
         ))}
-      </ul>
+      </ul> */}
+      <TeamTable data={teamPlayers} showRemove={false} />
     </div>
   );
 };

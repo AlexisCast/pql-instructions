@@ -5,7 +5,8 @@ import styles from './TeamTable.module.css';
 
 type DataProps = {
   data: PlayerProps[];
-  handleRemovePlayer: (id: number) => void;
+  handleRemovePlayer?: (id: number) => void;
+  showRemove?: boolean;
 };
 
 export type Role = 'Seeker' | 'Beater' | 'Chaser' | 'Keeper';
@@ -14,7 +15,7 @@ type Abilities = {
   [key in Role]: string[];
 };
 
-const TeamTable = ({ data, handleRemovePlayer }: DataProps) => {
+const TeamTable = ({ data, handleRemovePlayer, showRemove = true }: DataProps) => {
   const abilities: Abilities = {
     Seeker: ['Enhanced Vision', 'Speed Burst'],
     Beater: ['Power Swing', 'Iron Defense'],
@@ -32,7 +33,7 @@ const TeamTable = ({ data, handleRemovePlayer }: DataProps) => {
             <th>Age</th>
             <th>Position</th>
             <th>Special Ability</th>
-            <th>Remove</th>
+            {showRemove && <th>Remove</th>}
           </tr>
         </thead>
         <tbody className={styles.table__body}>
@@ -48,12 +49,14 @@ const TeamTable = ({ data, handleRemovePlayer }: DataProps) => {
                 ))}
               </td>
               <td>
-                <Button
-                  className={styles.button}
-                  type="button"
-                  onClick={() => handleRemovePlayer(id)}>
-                  remove
-                </Button>
+                {handleRemovePlayer && showRemove && (
+                  <Button
+                    className={styles.button}
+                    type="button"
+                    onClick={() => handleRemovePlayer(id)}>
+                    remove
+                  </Button>
+                )}
               </td>
             </tr>
           ))}
