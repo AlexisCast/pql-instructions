@@ -4,8 +4,10 @@ import { json, useLoaderData, useNavigate } from 'react-router-dom';
 import { getPlayers } from '../../services/players';
 import { createTeam } from '../../services/teams';
 
-import styles from './TeamIncantation.module.css';
 import { Form, FormInputSection } from '../../component/UI/Form/Form';
+import { Input } from '../../component/UI/Forms/Input/Input';
+
+import styles from './TeamIncantation.module.css';
 
 export interface PlayerProps {
   age: number;
@@ -98,29 +100,25 @@ const TeamIncantation = () => {
       <h1>Team Incantation</h1>
       <Form onSubmit={handleOnSubmit}>
         <FormInputSection>
-          <div className={styles.section__field}>
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className={styles.section__field}>
-            <label htmlFor="description">Description</label>
-            <input
-              id="description"
-              name="description"
-              type="text"
-              placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
+          <Input
+            label="Name"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <Input
+            label="Description"
+            id="description"
+            name="name"
+            type="text"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </FormInputSection>
 
         <div className={styles.table__conatainer}>
