@@ -1,11 +1,12 @@
 import { FormEvent, useState } from 'react';
 import { json, useLoaderData, useNavigate } from 'react-router-dom';
 
-import { getPlayers } from '../../services/players';
-import { createTeam } from '../../services/teams';
-
 import { Form, FormInputSection } from '../../component/UI/Form/Form';
 import { Input } from '../../component/UI/Forms/Input/Input';
+import TeamTable from '../../component/Team/TeamTable';
+
+import { getPlayers } from '../../services/players';
+import { createTeam } from '../../services/teams';
 
 import styles from './TeamIncantation.module.css';
 
@@ -25,12 +26,6 @@ type newTeamProps = {
   name: NameProp;
   slogan: DescriptionProp;
   players: number[];
-};
-
-type Role = 'Seeker' | 'Beater' | 'Chaser' | 'Keeper';
-
-type Abilities = {
-  [key in Role]: string[];
 };
 
 const TeamIncantation = () => {
@@ -88,13 +83,6 @@ const TeamIncantation = () => {
     }
   };
 
-  const abilities: Abilities = {
-    Seeker: ['Enhanced Vision', 'Speed Burst'],
-    Beater: ['Power Swing', 'Iron Defense'],
-    Chaser: ['Accurate Pass', 'Agility'],
-    Keeper: ['Quick Reflexes', 'Wall Defense']
-  };
-
   return (
     <>
       <h1>Team Incantation</h1>
@@ -121,46 +109,12 @@ const TeamIncantation = () => {
           />
         </FormInputSection>
 
-        <div className={styles.table__conatainer}>
-          <table className={styles.table}>
-            <thead className={styles.table__header}>
-              <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Position</th>
-                <th>Special Ability</th>
-                <th>Remove</th>
-              </tr>
-            </thead>
-            <tbody className={styles.table__body}>
-              {availablePlayers.map(({ age, id, name, position, team_id }: PlayerProps) => (
-                <tr key={id}>
-                  <td>{id}</td>
-                  <td>{name}</td>
-                  <td>{age}</td>
-                  <td>{position}</td>
-                  <td>
-                    {abilities[`${position}` as Role].map((ability, index) => (
-                      <p key={index}>{ability}</p>
-                    ))}
-                  </td>
-                  <td>
-                    <button type="button" onClick={() => handleRemovePlayer(id)}>
-                      remove
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div>
-          <button>Create Team</button>
+        <TeamTable data={availablePlayers} handleRemovePlayer={handleRemovePlayer} />
+        <div className={styles.buttons}>
           <button type="button" onClick={() => handleReset()}>
             Reset Players
           </button>
+          <button>Create Team</button>
         </div>
       </Form>
     </>

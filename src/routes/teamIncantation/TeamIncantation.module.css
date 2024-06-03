@@ -1,32 +1,7 @@
-.section__field {
+.buttons {
   display: flex;
-  flex-direction: column;
-}
-
-.table__conatainer {
-  max-height: 300px;
-  min-height: 300px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  width: fit-content;
-  background-color: azure;
-  width: 100%;
-}
-
-.table {
-  width: 100%;
-}
-
-.table__header {
-  position: sticky;
-  top: 0;
-  background: #fff;
-}
-
-.table__body {
-  margin-top: 30px;
-}
-
-.table__body p {
-  margin: 0px;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 2rem;
+  gap: 1rem;
 }
