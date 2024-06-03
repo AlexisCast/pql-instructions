@@ -1,7 +1,8 @@
 import { FormEvent, useRef, useState } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 
-import { CLIENT_URL, PLAYERS_URL } from '../../config';
+import { getPlayers } from '../../services/players';
+import { createTeam } from '../../services/teams';
 
 import styles from './TeamIncantation.module.css';
 
@@ -62,7 +63,22 @@ const TeamIncantation = () => {
       players: arrayOfPlayerIds
     };
     console.log({ newTeam });
-    form.current?.reset();
+
+    try {
+      const response = await createTeam(newTeam);
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const res = await response.json();
+        console.log('Error:', res);
+      } else {
+        const res = await response.json();
+        console.log('Team created', res);
+        form.current?.reset();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   const abilities: Abilities = {
@@ -80,7 +96,7 @@ const TeamIncantation = () => {
         <section className={styles.section}>
           <div className={styles.section__field}>
             <label htmlFor="name">Name</label>
-            <input id="name" type="text" placeholder="Name" required />
+            <input id="name" name="name" type="text" placeholder="Name" required />
           </div>
           <div className={styles.section__field}>
             <label htmlFor="description">Description</label>
@@ -139,12 +155,7 @@ export default TeamIncantation;
 export const loader = async ({ request, params }: any) => {
   console.log('TeamIncantation Loader');
 
-  const response = await fetch(CLIENT_URL + PLAYERS_URL + '/available', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+  const response = await getPlayers();
 
   if (!response.ok) {
     throw json(
