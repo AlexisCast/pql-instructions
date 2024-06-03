@@ -3,6 +3,7 @@ import { json, useLoaderData, useNavigate } from 'react-router-dom';
 import { getTeams } from '../../services/teams';
 
 import styles from './Teams.module.css';
+import { Button } from '../../component/UI/Button/Button';
 
 export interface TeamProps {
   id: number;
@@ -25,10 +26,10 @@ const Teams = () => {
         {dataLoader.map((team) => (
           <li key={team.id}>
             <div className={styles.card}>
-              <h3>{team.name}</h3>
-              <p>{team.slogan}</p>
+              <h2>{team.name}</h2>
+              <h3>{team.slogan}</h3>
               <div>
-                <button onClick={() => handleShowTeam(team.id)}>Show Full Team</button>
+                <Button onClick={() => handleShowTeam(team.id)}>Show Full Team</Button>
               </div>
             </div>
           </li>
