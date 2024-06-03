@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { json, useLoaderData, useNavigate } from 'react-router-dom';
 
 import { getPlayers } from '../../services/players';
@@ -14,14 +14,13 @@ export interface PlayerProps {
   team_id: number;
 }
 
-type FormValues = {
-  name: FormDataEntryValue;
-  description: FormDataEntryValue;
-};
+type NameProp = string;
+
+type DescriptionProp = string;
 
 type newTeamProps = {
-  name: string;
-  slogan: string;
+  name: NameProp;
+  slogan: DescriptionProp;
   players: number[];
 };
 
@@ -35,9 +34,11 @@ const TeamIncantation = () => {
   const navigate = useNavigate();
   const dataLoader: PlayerProps[] = useLoaderData() as PlayerProps[];
 
+  const [name, setName] = useState<NameProp>('');
+  const [description, setDescription] = useState<DescriptionProp>('');
+
   const [availablePlayers, setAvailablePlayers] = useState<PlayerProps[]>(dataLoader);
   const [availablePlayersReset, setAvailablePlayersReset] = useState<PlayerProps[]>(dataLoader);
-  const form = useRef<HTMLFormElement>(null);
 
   const handleRemovePlayer = (id: number) => {
     setAvailablePlayers((prev) => prev.filter((player) => player.id !== id));
@@ -50,17 +51,15 @@ const TeamIncantation = () => {
   const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries()) as FormValues;
-
-    console.log({ data });
+    console.log({ name });
+    console.log({ description });
 
     // Extracting only the id values
     const arrayOfPlayerIds = availablePlayers.map((player) => player.id);
 
     const newTeam: newTeamProps = {
-      name: data.name as string,
-      slogan: data.description as string,
+      name,
+      slogan: description,
       players: arrayOfPlayerIds
     };
     console.log({ newTeam });
@@ -75,7 +74,10 @@ const TeamIncantation = () => {
       } else {
         const res = await response.json();
         console.log('Team created', res);
-        form.current?.reset();
+
+        setName('');
+        setDescription('');
+
         navigate(`/teams/${res.newTeamId}`);
       }
     } catch (error) {
@@ -93,15 +95,30 @@ const TeamIncantation = () => {
   return (
     <>
       <h1>Team Incantation</h1>
-      <form className={styles.form} onSubmit={handleOnSubmit} ref={form}>
+      <form className={styles.form} onSubmit={handleOnSubmit}>
         <section className={styles.section}>
           <div className={styles.section__field}>
             <label htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Name" required />
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
           </div>
           <div className={styles.section__field}>
             <label htmlFor="description">Description</label>
-            <input id="description" name="description" type="text" placeholder="Description" />
+            <input
+              id="description"
+              name="description"
+              type="text"
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
         </section>
 
