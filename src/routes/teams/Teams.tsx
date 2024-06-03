@@ -1,4 +1,4 @@
-import { json, useLoaderData } from 'react-router-dom';
+import { json, useLoaderData, useNavigate } from 'react-router-dom';
 
 import { getTeams } from '../../services/teams';
 
@@ -11,7 +11,12 @@ export interface TeamProps {
 }
 
 const Teams = () => {
+  const navivate = useNavigate();
   const dataLoader: TeamProps[] = useLoaderData() as TeamProps[];
+
+  const handleShowTeam = (id: number) => {
+    navivate(`/teams/${id}`);
+  };
 
   return (
     <>
@@ -22,6 +27,9 @@ const Teams = () => {
             <div className={styles.card}>
               <h3>{team.name}</h3>
               <p>{team.slogan}</p>
+              <div>
+                <button onClick={() => handleShowTeam(team.id)}>Show Full Team</button>
+              </div>
             </div>
           </li>
         ))}

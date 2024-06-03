@@ -1,5 +1,5 @@
 import { FormEvent, useRef, useState } from 'react';
-import { json, useLoaderData } from 'react-router-dom';
+import { json, useLoaderData, useNavigate } from 'react-router-dom';
 
 import { getPlayers } from '../../services/players';
 import { createTeam } from '../../services/teams';
@@ -32,6 +32,7 @@ type Abilities = {
 };
 
 const TeamIncantation = () => {
+  const navigate = useNavigate();
   const dataLoader: PlayerProps[] = useLoaderData() as PlayerProps[];
 
   const [availablePlayers, setAvailablePlayers] = useState<PlayerProps[]>(dataLoader);
@@ -75,6 +76,7 @@ const TeamIncantation = () => {
         const res = await response.json();
         console.log('Team created', res);
         form.current?.reset();
+        navigate(`/teams/${res.newTeamId}`);
       }
     } catch (error) {
       console.error('Error:', error);

@@ -16,8 +16,3 @@
   background-color: bisque;
   border: 1px solid black;
 }
-
-.card:hover {
-  background-color: #58582c;
-  cursor: pointer;
-}

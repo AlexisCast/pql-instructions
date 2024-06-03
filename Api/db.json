@@ -4,6 +4,21 @@
       "id": 1,
       "name": "Gryffindor",
       "slogan": "Where dwell the brave at heart"
+    },
+    {
+      "id": 2,
+      "name": "test1",
+      "slogan": "this is the best one"
+    },
+    {
+      "id": 3,
+      "name": "Alexis Daniel",
+      "slogan": "this the best"
+    },
+    {
+      "id": 4,
+      "name": "Daniels team",
+      "slogan": "yep once again"
     }
   ],
   "players": [
@@ -33,21 +48,21 @@
       "name": "Draco Malfoy",
       "age": 11,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 5,
       "name": "Cedric Diggory",
       "age": 17,
       "position": "Seeker",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 6,
       "name": "Cho Chang",
       "age": 16,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 7,
@@ -61,14 +76,14 @@
       "name": "Ginny Weasley",
       "age": 14,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 9,
       "name": "Neville Longbottom",
       "age": 11,
       "position": "Keeper",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 10,
@@ -89,7 +104,7 @@
       "name": "Oliver Wood",
       "age": 17,
       "position": "Keeper",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 13,
@@ -145,7 +160,7 @@
       "name": "Harper",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 21,
@@ -194,7 +209,7 @@
       "name": "Whitby",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     },
     {
       "id": 28,
@@ -236,28 +251,28 @@
       "name": "Warrington",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 34,
       "name": "Whitby",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 4
     },
     {
       "id": 35,
       "name": "Kirke",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 3
     },
     {
       "id": 36,
       "name": "Bell",
       "age": 17,
       "position": "Chaser",
-      "team_id": null
+      "team_id": 2
     }
   ]
 }
