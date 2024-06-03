@@ -26,3 +26,13 @@
 .table__body p {
   margin: 0px;
 }
+
+/* TODO:add property for delete action in Button component */
+.button {
+  padding: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.button:hover {
+  background-color: var(--delete-color);
+}

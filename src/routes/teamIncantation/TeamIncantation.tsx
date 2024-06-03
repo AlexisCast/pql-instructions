@@ -4,6 +4,7 @@ import { json, useLoaderData, useNavigate } from 'react-router-dom';
 import { Form, FormInputSection } from '../../component/UI/Form/Form';
 import { Input } from '../../component/UI/Forms/Input/Input';
 import TeamTable from '../../component/Team/TeamTable';
+import { Button } from '../../component/UI/Button/Button';
 
 import { getPlayers } from '../../services/players';
 import { createTeam } from '../../services/teams';
@@ -111,10 +112,10 @@ const TeamIncantation = () => {
 
         <TeamTable data={availablePlayers} handleRemovePlayer={handleRemovePlayer} />
         <div className={styles.buttons}>
-          <button type="button" onClick={() => handleReset()}>
+          <Button type="button" onClick={() => handleReset()}>
             Reset Players
-          </button>
-          <button>Create Team</button>
+          </Button>
+          <Button variant="secondary">Create Team</Button>
         </div>
       </Form>
     </>

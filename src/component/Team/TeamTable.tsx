@@ -1,4 +1,5 @@
 import { PlayerProps } from '../../routes/teamIncantation/TeamIncantation';
+import { Button } from '../UI/Button/Button';
 
 import styles from './TeamTable.module.css';
 
@@ -47,9 +48,12 @@ const TeamTable = ({ data, handleRemovePlayer }: DataProps) => {
                 ))}
               </td>
               <td>
-                <button type="button" onClick={() => handleRemovePlayer(id)}>
+                <Button
+                  className={styles.button}
+                  type="button"
+                  onClick={() => handleRemovePlayer(id)}>
                   remove
-                </button>
+                </Button>
               </td>
             </tr>
           ))}
