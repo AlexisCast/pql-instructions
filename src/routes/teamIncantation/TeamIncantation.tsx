@@ -89,9 +89,8 @@ const TeamIncantation = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       <h1>Team Incantation</h1>
-
       <form className={styles.form} onSubmit={handleOnSubmit} ref={form}>
         <section className={styles.section}>
           <div className={styles.section__field}>
@@ -146,7 +145,7 @@ const TeamIncantation = () => {
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

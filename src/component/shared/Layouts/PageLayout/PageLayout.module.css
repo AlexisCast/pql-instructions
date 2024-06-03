@@ -1,0 +1,10 @@
+.container {
+  background-color: rgb(44, 100, 137);
+  width: 800px;
+  min-height: 400px;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

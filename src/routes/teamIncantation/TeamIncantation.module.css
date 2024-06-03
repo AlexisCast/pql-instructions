@@ -1,13 +1,3 @@
-.container {
-  background-color: rgb(44, 100, 137);
-  width: 800px;
-  height: fit-content;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .form {
   width: 100%;
   padding: 1rem;
