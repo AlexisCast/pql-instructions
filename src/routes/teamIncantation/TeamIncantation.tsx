@@ -5,6 +5,7 @@ import { getPlayers } from '../../services/players';
 import { createTeam } from '../../services/teams';
 
 import styles from './TeamIncantation.module.css';
+import { Form, FormInputSection } from '../../component/UI/Form/Form';
 
 export interface PlayerProps {
   age: number;
@@ -95,8 +96,8 @@ const TeamIncantation = () => {
   return (
     <>
       <h1>Team Incantation</h1>
-      <form className={styles.form} onSubmit={handleOnSubmit}>
-        <section className={styles.section}>
+      <Form onSubmit={handleOnSubmit}>
+        <FormInputSection>
           <div className={styles.section__field}>
             <label htmlFor="name">Name</label>
             <input
@@ -120,7 +121,7 @@ const TeamIncantation = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-        </section>
+        </FormInputSection>
 
         <div className={styles.table__conatainer}>
           <table className={styles.table}>
@@ -163,7 +164,7 @@ const TeamIncantation = () => {
             Reset Players
           </button>
         </div>
-      </form>
+      </Form>
     </>
   );
 };
