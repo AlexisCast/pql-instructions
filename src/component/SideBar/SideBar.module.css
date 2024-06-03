@@ -1,6 +1,6 @@
 .sideBar {
   width: 400px;
-  background-color: var(--color-bg);
+  background-color: var(--sideBar-bg-color);
   min-height: 100vh;
   width: 400px;
   left: 0;
@@ -14,12 +14,16 @@
 }
 
 .nav a {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1.2rem;
+  font-weight: 700;
   flex-grow: 1;
   margin: 0.5rem 0;
   text-align: center;
-  color: var(--color-white);
+  color: var(--sideBar-color);
 }
 
 .nav a:hover {
-  background-color: #0d1016;
+  background-color: var(--sideBar-bg-color-hover);
 }

@@ -15,7 +15,7 @@
 .table__header {
   position: sticky;
   top: 0;
-  background: #fff;
+  background: var(--sideBar-bg-color-hover);
 }
 
 .table__body {
@@ -27,6 +27,11 @@
   margin: 0px;
 }
 
+.table__body tr:nth-child(odd):hover {
+  background-color: var(--sideBar-bg-color-hover);
+  cursor: default;
+}
+
 /* TODO:add property for delete action in Button component */
 .button {
   padding: 0.3rem;
@@ -35,4 +40,23 @@
 
 .button:hover {
   background-color: var(--delete-color);
+}
+
+/* Custom scrollbar for WebKit browsers */
+.table__conatainer::-webkit-scrollbar {
+  width: 0.9rem; /* Width of the scrollbar */
+}
+
+.table__conatainer::-webkit-scrollbar-track {
+  background: var(--sideBar-color); /* Background of the scrollbar track */
+}
+
+.table__conatainer::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+  border: 2px solid var(--sideBar-bg-color-hover); /* Adds space around the thumb */
+}
+
+.table__conatainer::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color-hover); /* Color of the scrollbar thumb when hovered */
 }

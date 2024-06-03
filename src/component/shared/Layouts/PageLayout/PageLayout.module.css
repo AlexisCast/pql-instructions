@@ -1,5 +1,5 @@
 .container {
-  background-color: rgb(44, 100, 137);
+  background-color: var(--sideBar-bg-color);
   width: 800px;
   min-height: 400px;
   height: fit-content;

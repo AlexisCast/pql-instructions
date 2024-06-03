@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #f2f2f2;
+  background-color: var(--color-bg-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,8 +18,15 @@
 
   --primary-color: #004643;
   --secondary-color: #f9bc60;
+  --secondary-color-hover: #f6ce93;
 
   --delete-color: #bc4b4b;
+
+  --sideBar-bg-color: #abd1c6;
+  --sideBar-bg-color-hover: #95cbbc;
+  --sideBar-color: #004643;
+
+  --color-bg-primary: #004643;
 }
 
 #root {

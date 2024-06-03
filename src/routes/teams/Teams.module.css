@@ -24,6 +24,10 @@
   align-items: center;
 }
 
+.card:hover {
+  background-color: #f8ce9a;
+}
+
 .card h2 {
   margin: 0.5rem;
 }

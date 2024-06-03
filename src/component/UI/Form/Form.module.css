@@ -7,7 +7,7 @@
 
 .section {
   display: flex;
-  background-color: red;
+  background-color: var(--sideBar-bg-color-hover);
   justify-content: space-around;
   padding: 2rem;
 }

@@ -1,0 +1,13 @@
+.image_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 390px;
+  max-height: 390px;
+  background-color: var(--color-bg-color);
+}
+
+.image {
+  height: 350px;
+  object-fit: scale-down;
+}
