@@ -6,7 +6,7 @@ import { createTeam } from '../../services/teams';
 
 import styles from './TeamIncantation.module.css';
 
-interface PlayerProps {
+export interface PlayerProps {
   age: number;
   id: number;
   name: string;
