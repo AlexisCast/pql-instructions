@@ -9,6 +9,8 @@ import TeamIncantation, {
   loader as teamIncantationLoader
 } from './routes/teamIncantation/TeamIncantation';
 
+import Teams, { loader as teamsLoader } from './routes/teams/Teams';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,11 +33,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'teams',
-        element: (
-          <div>
-            <h1>Teams Page</h1>
-          </div>
-        )
+        element: <Teams />,
+        loader: teamsLoader
       }
     ]
   }

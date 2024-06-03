@@ -1,0 +1,23 @@
+.product_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 200px;
+  background-color: bisque;
+  border: 1px solid black;
+}
+
+.card:hover {
+  background-color: #58582c;
+  cursor: pointer;
+}
