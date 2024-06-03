@@ -27,6 +27,10 @@
   --sideBar-color: #004643;
 
   --color-bg-primary: #004643;
+
+  --color-bg-portal: #313439;
+  --color-gray-100: #f4f3f1;
+  --color-backdrop: #000000bf;
 }
 
 #root {

@@ -1,7 +1,7 @@
 import { useRouteError } from 'react-router-dom';
 
 import styles from './Error.module.css';
-import SideBar from '../../../component/SideBar/SideBar';
+import SideBar from '../../../component/Navigation/SideBar/SideBar';
 
 type ErrorProps = {
   status?: number;
